@@ -26,7 +26,7 @@
                                     <a class="nav-link" href="registro.html">Ayúdanos</a>
                                 </li>
                             </ul>
-                            <img src="img/Recurso 10.png" alt="Logo Ecofood" class="icono">
+                            <img src="img/ecofood.jpg" alt="Logo Ecofood" class="icono">
                         </div>
                     </div>
                 </nav>
@@ -37,12 +37,16 @@
         <div class="row text-center">
           <div class="col-md-4">
             <div class="card card-personalizado">
+              <div class="tooltip-hover">Haz clic para ver más</div>
               <div class="card-body">
                 <h5 class="titulo-card">¿Quienes Somos?</h5>
                 <p class="texto-card">EcoFood es una organización que busca reducir el desperdicio alimentario y promover la sostenibilidad a través de educación y tecnología.</p>
+                <div class="info-adicional" style="display: none; margin-top: 10px;">
+                  Fundada en 2020, EcoFood ha trabajado con más de 50 organizaciones para salvar toneladas de alimentos.
+                </div>
               </div>
             </div>
-          </div>
+          </div>          
           <div class="col-md-4">
             <div class="card card-personalizado">
               <div class="card-body">
@@ -61,6 +65,17 @@
           </div>
         </div>
     </div>
+<script>
+      document.querySelectorAll('.card-personalizado').forEach(card => {
+        card.addEventListener('click', () => {
+          const info = card.querySelector('.info-adicional');
+          if (info) {
+            // Alterna visibilidad
+            info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+          }
+        });
+      });
+</script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </html>

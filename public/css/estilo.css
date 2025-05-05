@@ -8,8 +8,8 @@ body {
   }
 
 .icono {
-    max-height: 50px;
-    width: 200px;
+    max-height: 75px;
+    width: 100px;
 }
 
 .card-personalizado {
@@ -17,6 +17,9 @@ body {
     border: none;
     box-shadow: none;
     color: white;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
   }
   
   .card-personalizado .card-body {
@@ -26,6 +29,27 @@ body {
     border-radius: 10px;
   }
   
+  .card-personalizado:hover {
+    transform: scale(1.05);
+  }
+
+  .tooltip-hover {
+    display: none;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    z-index: 10;
+  }
+
+  .card-personalizado:hover .tooltip-hover {
+    display: block;
+  }
 
   .seccion-cards {
     margin-top: 200px;
