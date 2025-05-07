@@ -13,18 +13,19 @@
             <div class="col">
                 <nav class="navbar navbar-expand-lg bg-success">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">EcoFood</a>
+                        <a class="navbar-brand" href="index.html">EcoFood</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Contacto</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="registro.html">Ayúdanos</a>
-                                </li>
+                          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                              <a id="contacto-link" class="nav-link active text-dark" href="#">Contacto</a>
+                            </li>                                                    
+                            <li class="nav-item d-flex align-items-center">
+                              <button class="btn btn-primary btn-sm me-2" onclick="redirigirRegistro()">Registrarse</button>
+                              <button class="btn btn-warning btn-sm" onclick="redirigirLogin()">Iniciar Sesión</button>
+                            </li>                                                                            
                             </ul>
                             <img src="img/ecofood.jpg" alt="Logo Ecofood" class="icono">
                         </div>
@@ -32,7 +33,10 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </div>            
+       <div class="container mt-4 text-center">
+      <h4 id="fraseMotivadora" class="text-white fw-bold"></h4>
+    </div> 
     <div class="container seccion-cards">
         <div class="row text-center">
           <div class="col-md-4">
@@ -87,7 +91,7 @@
                    Participa: Únete a nuestras campañas y eventos para generar cambios significativos.">
                 <div class="card-body">
                   <h5 class="titulo-card">¿Cómo Puedes Ayudar?</h5>
-                  <p class="texto-card">Compra y consume con conciencia, apoya lo local, comparte el mensaje y participá para reducir el desperdicio alimentario.</p>
+                  <p class="texto-card">Compra y consume con conciencia, apoya lo local, comparte el mensaje y participa para reducir el desperdicio alimentario.</p>
                 </div>
               </div>
             </div>
@@ -95,6 +99,26 @@
               
         </div>
     </div>
+    <div id="panel-contacto" style="
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    z-index: 9999;
+    transition: right 0.3s ease;
+  ">
+    <button class="btn btn-sm btn-danger mb-3" onclick="cerrarPanelContacto()">Cerrar</button>
+    <h4>Contacto</h4>
+    <p><strong>Email:</strong> contacto@ecofood.org</p>
+    <p><strong>Teléfono:</strong> +56 9 1234 5678</p>
+    <p><strong>Dirección:</strong> Avenida Siempre Viva 742</p>
+    <p><strong>Redes Sociales:</strong> <p>Facebook: EcoFoodOficial <p>Instragram: ecofood_oficial <p>X: @Ecofood_org</p></p></p></p>
+  </div>
+
     <div id="pantalla-completa" style="
     display: none;
     position: fixed;
@@ -113,7 +137,7 @@
 <p id="mensaje-texto" style="font-size: 1.2rem;"></p>
 
 <div id="boton-extra" style="margin-top: 20px; display: none;">
-  <a href="ayuda.html" class="btn btn-primary">¿Quieres Ayudar?</a>
+  <a href="registro.html " class="btn btn-primary">¿Quieres Ayudar?</a>
 </div>
 
 <button class="btn btn-light mt-4" onclick="cerrarPantallaCompleta()">Cerrar</button>
@@ -144,6 +168,39 @@
     }
   });
 });
+
+  document.getElementById('contacto-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('panel-contacto').style.right = '0';
+  });
+
+  function cerrarPanelContacto() {
+    document.getElementById('panel-contacto').style.right = '-400px';
+  }
+  function redirigirRegistro() {
+  window.location.href = 'registro.html';
+}
+
+function redirigirLogin() {
+  window.location.href = 'login.html';
+}
+
+const frases = [
+  "La comida no tiene que ir al desperdicio. Rescatala y come de la basura",
+  "Cada alimento rescatado es una oportunidad para crear un impacto positivo en tu salud y en el medio ambiente.",
+  "Reciclar alimentos no solo reduce el desperdicio, también es una forma de nutrir tu cuerpo de manera más consciente y saludable."
+];
+
+function mostrarFrase() {
+  const frase = frases[Math.floor(Math.random() * frases.length)];
+  document.getElementById("fraseMotivadora").textContent = frase;
+}
+
+window.onload = function () {
+  mostrarFrase();
+};
+
+
 
   </script>
   

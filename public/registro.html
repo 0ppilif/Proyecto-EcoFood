@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crear Cuenta</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="kemestascontainer">
+    <h2>Crear Cuenta</h2>
+    <form id="registroForm" action="login.html" method="post">
+      <div>
+        <input type="text" id="usuario" placeholder="Nombre de Usuario" />
+        <div id="error-usuario" class="error"></div>
+      </div>
+      <div>
+        <input type="email" id="correo" placeholder="Correo Electrónico" />
+        <div id="error-correo" class="error"></div>
+      </div>
+      <div>
+        <input type="password" id="password" placeholder="Contraseña" />
+        <div id="error-password" class="error"></div>
+      </div>
+      <div>
+        <input type="password" id="confirmar" placeholder="Confirmar Contraseña" />
+        <div id="error-confirmar" class="error"></div>
+      </div>
+      <button type="submit">Crear Cuenta</button>
+    </form>
+
+    <div class="link">
+      <p>¿Ya tienes una cuenta? <a href="login.html">Iniciar sesión</a></p>
+      <p>¿Quieres volver al inicio? <a href="index.html">Volver al inicio</a></p>
+    </div>
+  </div>
+
+  <script>
+    function mostrarError(id, mensaje) {
+      document.getElementById(id).textContent = mensaje;
+    }
+
+    function limpiarErrores() {
+      document.querySelectorAll(".error").forEach(e => e.textContent = "");
+    }
+
+    function validarRegistro(event) {
+      event.preventDefault();
+      limpiarErrores();
+
+      const usuario = document.getElementById("usuario").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmar = document.getElementById("confirmar").value;
+
+      let valido = true;
+
+      if (usuario === "") {
+        mostrarError("error-usuario", "El nombre de usuario es obligatorio.");
+        valido = false;
+      }
+
+      if (correo === "") {
+        mostrarError("error-correo", "El correo electrónico es obligatorio.");
+        valido = false;
+      }
+
+      if (password === "") {
+        mostrarError("error-password", "La contraseña es obligatoria.");
+        valido = false;
+      }
+
+      if (confirmar === "") {
+        mostrarError("error-confirmar", "Por favor confirma tu contraseña.");
+        valido = false;
+      } else if (password !== confirmar) {
+        mostrarError("error-confirmar", "Las contraseñas no coinciden.");
+        valido = false;
+      }
+
+      if (valido) {
+        event.target.submit();
+      }
+    }
+
+    document.getElementById("registroForm").addEventListener("submit", validarRegistro);
+  </script>
+</body>
+</html>

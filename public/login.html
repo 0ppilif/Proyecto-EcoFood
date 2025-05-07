@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="kemestascontainer">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm" action="home.html" method="post">
+      <div>
+        <input type="email" id="loginCorreo" placeholder="Correo Electrónico" />
+        <div id="error-login-correo" class="error"></div>
+      </div>
+      <div>
+        <input type="password" id="loginPassword" placeholder="Contraseña" />
+        <div id="error-login-password" class="error"></div>
+      </div>
+      <button type="submit">Iniciar</button>
+    </form>
+    <div class="link">
+      <p><a href="registro.html">Volver</a></p>
+      <p>¿Quieres volver al inicio? <a href="index.html">Volver al inicio</a></p>
+    </div>
+  </div>
+
+  <script>
+    function mostrarError(id, mensaje) {
+      document.getElementById(id).textContent = mensaje;
+    }
+
+    function limpiarErroresLogin() {
+      document.getElementById("error-login-correo").textContent = "";
+      document.getElementById("error-login-password").textContent = "";
+    }
+
+    function validarLogin(event) {
+      event.preventDefault();
+      limpiarErroresLogin();
+
+      const correo = document.getElementById("loginCorreo").value.trim();
+      const password = document.getElementById("loginPassword").value;
+
+      let valido = true;
+
+      if (correo === "") {
+        mostrarError("error-login-correo", "El correo es obligatorio.");
+        valido = false;
+      }
+
+      if (password === "") {
+        mostrarError("error-login-password", "La contraseña es obligatoria.");
+        valido = false;
+      }
+
+      if (valido) {
+        event.target.submit();
+      }
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", validarLogin);
+  </script>
+</body>
+</html>
